@@ -10,10 +10,9 @@ class Settings(BaseSettings):
     DB_PASSWORD: str
     DB_HOST: str = "localhost"
     DB_PORT: int = 5432
-    DB_NAME: str = "shorturl"
+    DB_NAME: str = "shortenurl"
 
     APP_NAME: str = "URL Shortener"
-    DEBUG: bool = False
     BASE_URL: str = "http://localhost:8000"
     SHORT_CODE_LENGTH: int = 6
 
