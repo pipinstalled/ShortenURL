@@ -39,3 +39,10 @@ def get_url_by_short_code(db: Session, short_code: str):
     db.commit()
     db.refresh(url)
     return url.original_url, None
+
+
+def get_url_stats(db: Session, short_code: str):
+    url = db.query(Url).filter(Url.short_code == short_code).first()
+    if not url:
+        return None, "URL not found"
+    return url, None
