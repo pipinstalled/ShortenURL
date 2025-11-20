@@ -23,6 +23,7 @@ class Url(Base):
     original_url = Column(String, nullable=False)
     short_code = Column(String(16), unique=True, index=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
+    visits_count = Column(Integer, default=0)
     
     visits = relationship("UrlVisit", back_populates="url")
 

@@ -30,3 +30,12 @@ def create_short_url(db: Session, original_url: str):
     except Exception as e:
         db.rollback()
         return None, "Database error"
+
+def get_url_by_short_code(db: Session, short_code: str):
+    url = db.query(Url).filter(Url.short_code == short_code).first()
+    if not url:
+        return None, "URL not found"
+    url.visits_count += 1
+    db.commit()
+    db.refresh(url)
+    return url.original_url, None
